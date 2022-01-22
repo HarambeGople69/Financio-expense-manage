@@ -95,7 +95,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         // isSkippable = true,
         pages: onboardingPagesList,
         indicator: Indicator(
-          closedIndicator: ClosedIndicator(color: logoColor),
+          closedIndicator: const ClosedIndicator(
+            color: lightlogoColor,
+          ),
           indicatorDesign: IndicatorDesign.polygon(
             polygonDesign: PolygonDesign(
               polygonSpacer: ScreenUtil().setSp(25),
@@ -105,7 +107,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ),
         ),
         skipButtonStyle: SkipButtonStyle(
-          skipButtonColor: lightlogoColor,
+          skipButtonColor: logoColor,
           skipButtonText: Text(
             "Skip",
             style: TextStyle(

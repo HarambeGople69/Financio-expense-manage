@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/screens/dashboard_screen/dashboard_screen.dart';
 import 'package:myapp/screens/onboarding_screen/onboarding_screen.dart';
-import 'package:onboarding/onboarding.dart';
 
 class OuterLayer extends StatefulWidget {
   const OuterLayer({Key? key}) : super(key: key);
@@ -19,7 +18,9 @@ class _OuterLayerState extends State<OuterLayer> {
             valueListenable: Hive.box<int>("outerLayer").listenable(),
             builder: (context, Box<int> boxs, child) {
               int value = boxs.get("state", defaultValue: 0)!;
-              return value == 0 ? OnBoardingScreen() : DashBoardScreen();
+              return value == 0
+                  ? const OnBoardingScreen()
+                  : const DashBoardScreen();
             }));
   }
 }

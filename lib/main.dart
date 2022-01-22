@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/screens/splash_screen/splash_screen.dart';
+import 'package:myapp/services/app_binding/app_binding.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox<int>("outerLayer");
   runApp(
-    MyApp(),
+    const MyApp(),
   );
 }
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp]);
     return ScreenUtilInit(
       builder: () => GetMaterialApp(
-        // initialBinding: MyBinding(),
+        initialBinding: MyBinding(),
         useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(brightness: Brightness.dark),
