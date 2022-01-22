@@ -14,13 +14,15 @@ class _OuterLayerState extends State<OuterLayer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ValueListenableBuilder(
-            valueListenable: Hive.box<int>("outerLayer").listenable(),
-            builder: (context, Box<int> boxs, child) {
-              int value = boxs.get("state", defaultValue: 0)!;
-              return value == 0
-                  ? const OnBoardingScreen()
-                  : const DashBoardScreen();
-            }));
+      body: ValueListenableBuilder(
+        valueListenable: Hive.box<int>("outerLayer").listenable(),
+        builder: (context, Box<int> boxs, child) {
+          int value = boxs.get("state", defaultValue: 0)!;
+          return value == 0
+              ? const OnBoardingScreen()
+              : const DashBoardScreen();
+        },
+      ),
+    );
   }
 }

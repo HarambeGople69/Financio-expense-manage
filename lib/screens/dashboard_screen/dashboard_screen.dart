@@ -30,28 +30,29 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
         return Scaffold(
           body: screens[Get.find<DashboardController>().indexs.value],
           bottomNavigationBar: CurvedNavigationBar(
+            index: Get.find<DashboardController>().indexs.value,
             buttonBackgroundColor: logoColor,
             height: ScreenUtil().setSp(50),
             color: logoColor,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             items: [
               Icon(
-                Icons.add,
+                Icons.assessment,
                 size: ScreenUtil().setSp(25),
                 color: Colors.white,
               ),
               Icon(
-                Icons.list,
+                Icons.assignment,
                 size: ScreenUtil().setSp(25),
                 color: Colors.white,
               ),
               Icon(
-                Icons.compare_arrows,
+                Icons.account_tree_outlined,
                 size: ScreenUtil().setSp(25),
                 color: Colors.white,
               ),
               Icon(
-                Icons.compare_arrows,
+                Icons.print,
                 size: ScreenUtil().setSp(25),
                 color: Colors.white,
               ),

@@ -13,7 +13,7 @@ class _ThermalPrinterScreenState extends State<ThermalPrinterScreen> {
     return Scaffold(
       body: Center(
         child: Text(
-          "data",
+          "Thermal Printer",
         ),
       ),
     );
