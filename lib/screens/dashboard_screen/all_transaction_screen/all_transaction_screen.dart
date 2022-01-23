@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:lottie/lottie.dart';
 import 'package:myapp/db/db_service.dart';
 import 'package:myapp/models/transaction_model.dart';
 import 'package:myapp/utils/colors.dart';
@@ -47,17 +48,37 @@ class _AllTransactionScreenState extends State<AllTransactionScreen> {
               builder: (context, Box<TransActionModel> transActionList, child) {
                 // ignore: non_constant_identifier_names
                 List<int> Keys = transActionList.keys.cast<int>().toList();
-                return ListView.builder(
-                    shrinkWrap: true,
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: Keys.length,
-                    itemBuilder: (context, index) {
-                      final int key = Keys[index];
-                      final TransActionModel transActionModel =
-                          transActionList.get(key)!;
-                      return OurTransactionTile(
-                          transActionModel: transActionModel);
-                    });
+
+                return Keys.isNotEmpty
+                    ? ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: Keys.length,
+                        itemBuilder: (context, index) {
+                          final int key = Keys[index];
+                          final TransActionModel transActionModel =
+                              transActionList.get(key)!;
+                          return OurTransactionTile(
+                              transActionModel: transActionModel);
+                        })
+                    : Column(
+                        children: [
+                          Lottie.asset(
+                            'assets/animations/notransaction.json',
+                            height: ScreenUtil().setSp(200),
+                            width: double.infinity,
+                            fit: BoxFit.fitWidth,
+                          ),
+                          OurSizedBox(),
+                          Text(
+                            "No Transaction made yet",
+                            style: TextStyle(
+                              fontSize: ScreenUtil().setSp(17.5),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      );
               },
             ),
           ],

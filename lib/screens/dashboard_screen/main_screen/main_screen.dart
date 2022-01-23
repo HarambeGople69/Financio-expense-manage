@@ -80,6 +80,12 @@ class _MainScreenState extends State<MainScreen> {
                   });
                   return Expanded(
                     child: SfCartesianChart(
+                        // ignore: prefer_const_literals_to_create_immutables
+                        palette: [
+                          Colors.orange,
+                          Colors.green,
+                          Colors.red,
+                        ],
                         tooltipBehavior: _tooltipBehavior,
                         legend: Legend(
                           isVisible: true,
