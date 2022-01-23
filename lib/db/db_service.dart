@@ -2,12 +2,14 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:myapp/controller/dashboard_controller.dart';
 import 'package:myapp/models/account_model.dart';
+import 'package:myapp/models/transaction_account_detail.dart';
 import 'package:myapp/models/transaction_model.dart';
 import 'package:myapp/widgets/our_flutter_toast.dart';
 
 const String transitionList = "TransActionModelList";
 const String userName = "userName";
 const String myBalance = "myBalance";
+const String myTransactionAccountDetail = "myTransactionAccountDetail";
 
 class dbHelper {
   addTransaction(TransActionModel transActionModel) {
@@ -29,6 +31,15 @@ class dbHelper {
 
           expense = expense + transActionModel.money;
           balance = balance - transActionModel.money;
+
+          Hive.box<TransactionAccountDetailModel>(myTransactionAccountDetail)
+              .add(
+            TransactionAccountDetailModel(
+                balance: balance,
+                income: income,
+                expense: expense,
+                time: transActionModel.dateTime),
+          );
 
           Hive.box<AccountModel>(myBalance).put(
             0,
@@ -58,6 +69,16 @@ class dbHelper {
 
         income = income + transActionModel.money;
         balance = balance + transActionModel.money;
+
+      
+         Hive.box<TransactionAccountDetailModel>(myTransactionAccountDetail)
+              .add(
+            TransactionAccountDetailModel(
+                balance: balance,
+                income: income,
+                expense: expense,
+                time: transActionModel.dateTime),
+          );
 
         Hive.box<AccountModel>(myBalance).put(
           0,

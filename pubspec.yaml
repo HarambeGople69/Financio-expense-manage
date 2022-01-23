@@ -45,6 +45,7 @@ dependencies:
   intl: ^0.17.0
   fluttertoast: ^8.0.8
   flutter_custom_clippers: ^2.0.0
+  syncfusion_flutter_charts: ^19.4.43
 
 dev_dependencies:
   flutter_test:

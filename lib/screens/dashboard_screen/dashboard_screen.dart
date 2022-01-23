@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:myapp/controller/dashboard_controller.dart';
 import 'package:myapp/screens/dashboard_screen/add_transaction_screen/add_transaction_screen.dart';
+import 'package:myapp/screens/dashboard_screen/all_transaction_screen/all_transaction_screen.dart';
 import 'package:myapp/screens/dashboard_screen/main_screen/main_screen.dart';
 import 'package:myapp/screens/dashboard_screen/thermal_printer_screen/thermal_printer_screen.dart';
-import 'package:myapp/screens/dashboard_screen/yearly_transaction_screen/yearly_transaction_screen.dart';
 import 'package:myapp/utils/colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -20,7 +20,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   List screens = const [
     MainScreen(),
     AddTransactionScreen(),
-    YearlyTransactionScreen(),
+    AllTransactionScreen(),
     ThermalPrinterScreen(),
   ];
   @override
