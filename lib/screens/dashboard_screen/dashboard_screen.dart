@@ -6,7 +6,6 @@ import 'package:myapp/controller/dashboard_controller.dart';
 import 'package:myapp/screens/dashboard_screen/add_transaction_screen/add_transaction_screen.dart';
 import 'package:myapp/screens/dashboard_screen/all_transaction_screen/all_transaction_screen.dart';
 import 'package:myapp/screens/dashboard_screen/main_screen/main_screen.dart';
-import 'package:myapp/screens/dashboard_screen/thermal_printer_screen/thermal_printer_screen.dart';
 import 'package:myapp/utils/colors.dart';
 
 class DashBoardScreen extends StatefulWidget {
@@ -21,7 +20,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
     MainScreen(),
     AddTransactionScreen(),
     AllTransactionScreen(),
-    ThermalPrinterScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -48,11 +46,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
               ),
               Icon(
                 Icons.account_tree_outlined,
-                size: ScreenUtil().setSp(25),
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.print,
                 size: ScreenUtil().setSp(25),
                 color: Colors.white,
               ),

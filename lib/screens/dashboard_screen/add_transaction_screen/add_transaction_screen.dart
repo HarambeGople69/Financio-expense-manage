@@ -42,6 +42,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
       fromdate = DateTime.now().add(
         const Duration(minutes: 1),
       );
+      _date_controller.text = Utils().customDate(fromdate);
     });
   }
 
@@ -62,7 +63,7 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
           appBar: AppBar(
             backgroundColor: logoColor,
             title: Text(
-              "Add transaction",
+              "Make transaction",
               style: TextStyle(
                 fontSize: ScreenUtil().setSp(22.5),
               ),
@@ -136,25 +137,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                     type: TextInputType.datetime,
                     number: 1,
                     readonly: true,
-                    ontap: () async {
-                      DateTime? date = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(2222),
-                      );
-                      if (date == null) {
-                        return null;
-                      }
-                      setState(() {
-                        fromdate = DateTime(
-                          date.year,
-                          date.month,
-                          date.day,
-                        );
-                        _date_controller.text = Utils().customDate(fromdate);
-                      });
-                    },
                   ),
                   const OurSizedBox(),
                   OurElevatedButton(

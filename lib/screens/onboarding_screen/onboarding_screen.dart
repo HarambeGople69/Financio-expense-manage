@@ -47,7 +47,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           const OurSizedBox(),
           const OurSizedBox(),
           const OurShimmerText(
-            title: 'Keep track of Expenses',
+            title: 'KEEP TRACK OF EXPENSES',
           )
         ],
       ),
