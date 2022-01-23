@@ -3,7 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/models/transaction_model.dart';
 import 'package:myapp/utils/colors.dart';
 import 'package:myapp/utils/utils.dart';
-import 'package:myapp/widgets/our_shimmer_text.dart';
+import 'package:myapp/widgets/our_expense_text.dart';
+import 'package:myapp/widgets/our_income_text.dart';
 import 'package:myapp/widgets/our_sized_box.dart';
 
 class OurTransactionTile extends StatelessWidget {
@@ -41,7 +42,7 @@ class OurTransactionTile extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  OurSizedBox(),
+                  const OurSizedBox(),
                   Text(
                     Utils().customDate(transActionModel.dateTime),
                     style: TextStyle(
@@ -52,13 +53,17 @@ class OurTransactionTile extends StatelessWidget {
                 ],
               ),
             ),
-            OurShimmerText(
-              title: transActionModel.money.toString(),
-            ),
+            transActionModel.type == "Expense"
+                ? OurExpenseText(
+                    title: transActionModel.money.toString(),
+                  )
+                : OurIncomeText(
+                    title: transActionModel.money.toString(),
+                  ),
           ],
         ),
-        OurSizedBox(),
-        Divider(
+        const OurSizedBox(),
+        const Divider(
           color: lightlogoColor,
         ),
       ],
