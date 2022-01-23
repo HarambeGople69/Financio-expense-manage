@@ -11,7 +11,7 @@ class OurExpenseIcon extends StatelessWidget {
       baseColor: Color(0xffF74040),
       highlightColor: Color(0xffC30707),
       child: Icon(
-        Icons.arrow_upward,
+        Icons.arrow_downward,
         size: ScreenUtil().setSp(30),
       ),
     );
