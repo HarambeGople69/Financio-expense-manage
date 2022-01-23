@@ -75,56 +75,58 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: Onboarding(
-        proceedButtonStyle: ProceedButtonStyle(
-          proceedpButtonText: Text(
-            "Sign Up",
-            style: TextStyle(
-              fontSize: ScreenUtil().setSp(15),
+      child: Container(
+        child: Onboarding(
+          proceedButtonStyle: ProceedButtonStyle(
+            proceedpButtonText: Text(
+              "Sign Up",
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(15),
+              ),
+            ),
+            proceedButtonPadding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setSp(15),
+              vertical: ScreenUtil().setSp(5),
+            ),
+            proceedButtonColor: logoColor,
+            proceedButtonRoute: (context) async {
+              await Hive.box<int>("outerLayer").put("state", 1);
+            },
+          ),
+          // isSkippable = true,
+          pages: onboardingPagesList,
+          indicator: Indicator(
+            closedIndicator: const ClosedIndicator(
+              color: lightlogoColor,
+            ),
+            indicatorDesign: IndicatorDesign.polygon(
+              polygonDesign: PolygonDesign(
+                polygonSpacer: ScreenUtil().setSp(25),
+                polygonRadius: ScreenUtil().setSp(8.5),
+                polygon: DesignType.polygon_circle,
+              ),
             ),
           ),
-          proceedButtonPadding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setSp(15),
-            vertical: ScreenUtil().setSp(5),
-          ),
-          proceedButtonColor: logoColor,
-          proceedButtonRoute: (context) async {
-            await Hive.box<int>("outerLayer").put("state", 1);
-          },
-        ),
-        // isSkippable = true,
-        pages: onboardingPagesList,
-        indicator: Indicator(
-          closedIndicator: const ClosedIndicator(
-            color: lightlogoColor,
-          ),
-          indicatorDesign: IndicatorDesign.polygon(
-            polygonDesign: PolygonDesign(
-              polygonSpacer: ScreenUtil().setSp(25),
-              polygonRadius: ScreenUtil().setSp(8.5),
-              polygon: DesignType.polygon_circle,
+          skipButtonStyle: SkipButtonStyle(
+            skipButtonColor: logoColor,
+            skipButtonText: Text(
+              "Skip",
+              style: TextStyle(
+                fontSize: ScreenUtil().setSp(15),
+              ),
+            ),
+            skipButtonPadding: EdgeInsets.symmetric(
+              horizontal: ScreenUtil().setSp(15),
+              vertical: ScreenUtil().setSp(5),
             ),
           ),
+          //-------------Other properties--------------
+          //Color background,
+          //EdgeInsets pagesContentPadding
+          //EdgeInsets titleAndInfoPadding
+          //EdgeInsets footerPadding
+          //SkipButtonStyle skipButtonStyle
         ),
-        skipButtonStyle: SkipButtonStyle(
-          skipButtonColor: logoColor,
-          skipButtonText: Text(
-            "Skip",
-            style: TextStyle(
-              fontSize: ScreenUtil().setSp(15),
-            ),
-          ),
-          skipButtonPadding: EdgeInsets.symmetric(
-            horizontal: ScreenUtil().setSp(15),
-            vertical: ScreenUtil().setSp(5),
-          ),
-        ),
-        //-------------Other properties--------------
-        //Color background,
-        //EdgeInsets pagesContentPadding
-        //EdgeInsets titleAndInfoPadding
-        //EdgeInsets footerPadding
-        //SkipButtonStyle skipButtonStyle
       ),
     ));
   }

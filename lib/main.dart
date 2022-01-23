@@ -13,6 +13,7 @@ Future<void> main() async {
   Hive.registerAdapter(TransActionModelAdapter());
   await Hive.initFlutter();
   await Hive.openBox<int>("outerLayer");
+  await Hive.openBox<String>(userName);
   await Hive.openBox<TransActionModel>(transitionList);
   runApp(
     const MyApp(),

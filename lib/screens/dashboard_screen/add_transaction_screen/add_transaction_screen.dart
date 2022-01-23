@@ -79,8 +79,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   CustomTextField(
-                    // start: _money_node,
-                    // end: _remarks_node,
                     controller: _money_controller,
                     validator: (value) {},
                     title: "Enter money",
@@ -89,8 +87,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                   ),
                   const OurSizedBox(),
                   CustomTextField(
-                    // start: _remarks_node,
-                    // end: _money_node,
                     controller: _remarks_controller,
                     validator: (value) {},
                     title: "Enter remarks",
@@ -164,7 +160,6 @@ class _AddTransactionScreenState extends State<AddTransactionScreen> {
                   OurElevatedButton(
                     title: "Add",
                     function: () {
-                      // print(choice);
                       if (_money_controller.text.trim().isNotEmpty &&
                           _remarks_controller.text.trim().isNotEmpty &&
                           _date_controller.text.trim().isNotEmpty) {
