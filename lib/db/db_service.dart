@@ -6,6 +6,7 @@ import 'package:myapp/widgets/our_flutter_toast.dart';
 
 const String transitionList = "TransActionModelList";
 const String userName = "userName";
+const String myBalance = "myBalance";
 
 class dbHelper {
   addTransaction(TransActionModel transActionModel) {

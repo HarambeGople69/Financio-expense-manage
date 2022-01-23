@@ -8,12 +8,16 @@ import 'package:myapp/models/transaction_model.dart';
 import 'package:myapp/screens/splash_screen/splash_screen.dart';
 import 'package:myapp/services/app_binding/app_binding.dart';
 
+import 'models/account_model.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Hive.registerAdapter(TransActionModelAdapter());
+  Hive.registerAdapter(AccountModelAdapter());
   await Hive.initFlutter();
   await Hive.openBox<int>("outerLayer");
   await Hive.openBox<String>(userName);
+  await Hive.openBox<AccountModel>(myBalance);
   await Hive.openBox<TransActionModel>(transitionList);
   runApp(
     const MyApp(),

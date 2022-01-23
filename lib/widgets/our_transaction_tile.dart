@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:myapp/models/transaction_model.dart';
 import 'package:myapp/utils/colors.dart';
 import 'package:myapp/utils/utils.dart';
+import 'package:myapp/widgets/our_expense_icon.dart';
 import 'package:myapp/widgets/our_expense_text.dart';
+import 'package:myapp/widgets/our_income_icon.dart';
 import 'package:myapp/widgets/our_income_text.dart';
 import 'package:myapp/widgets/our_sized_box.dart';
 
@@ -17,17 +19,10 @@ class OurTransactionTile extends StatelessWidget {
     return Column(
       children: [
         Row(
-          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
-              transActionModel.type == "Expense"
-                  ? Icons.arrow_downward
-                  : Icons.arrow_upward,
-              size: ScreenUtil().setSp(30),
-              color: transActionModel.type == "Expense"
-                  ? Colors.red
-                  : Colors.green,
-            ),
+            transActionModel.type == "Expense"
+                ? const OurExpenseIcon()
+                : const OurIncomeIcon(),
             SizedBox(
               width: ScreenUtil().setSp(10),
             ),
