@@ -36,52 +36,55 @@ class _AllTransactionScreenState extends State<AllTransactionScreen> {
           horizontal: ScreenUtil().setSp(20),
           vertical: ScreenUtil().setSp(10),
         ),
-        child: Column(
-          children: [
-            const OurShimmerText(
-              title: "Recent Transactions",
-            ),
-            const OurSizedBox(),
-            ValueListenableBuilder(
-              valueListenable:
-                  Hive.box<TransActionModel>(transitionList).listenable(),
-              builder: (context, Box<TransActionModel> transActionList, child) {
-                // ignore: non_constant_identifier_names
-                List<int> Keys = transActionList.keys.cast<int>().toList();
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const OurShimmerText(
+                title: "Recent Transactions",
+              ),
+              const OurSizedBox(),
+              ValueListenableBuilder(
+                valueListenable:
+                    Hive.box<TransActionModel>(transitionList).listenable(),
+                builder:
+                    (context, Box<TransActionModel> transActionList, child) {
+                  // ignore: non_constant_identifier_names
+                  List<int> Keys = transActionList.keys.cast<int>().toList();
 
-                return Keys.isNotEmpty
-                    ? ListView.builder(
-                        shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
-                        itemCount: Keys.length,
-                        itemBuilder: (context, index) {
-                          final int key = Keys[index];
-                          final TransActionModel transActionModel =
-                              transActionList.get(key)!;
-                          return OurTransactionTile(
-                              transActionModel: transActionModel);
-                        })
-                    : Column(
-                        children: [
-                          Lottie.asset(
-                            'assets/animations/notransaction.json',
-                            height: ScreenUtil().setSp(200),
-                            width: double.infinity,
-                            fit: BoxFit.fitWidth,
-                          ),
-                          OurSizedBox(),
-                          Text(
-                            "No Transaction made yet",
-                            style: TextStyle(
-                              fontSize: ScreenUtil().setSp(17.5),
-                              fontWeight: FontWeight.bold,
+                  return Keys.isNotEmpty
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: Keys.length,
+                          itemBuilder: (context, index) {
+                            final int key = Keys[index];
+                            final TransActionModel transActionModel =
+                                transActionList.get(key)!;
+                            return OurTransactionTile(
+                                transActionModel: transActionModel);
+                          })
+                      : Column(
+                          children: [
+                            Lottie.asset(
+                              'assets/animations/notransaction.json',
+                              height: ScreenUtil().setSp(200),
+                              width: double.infinity,
+                              fit: BoxFit.fitWidth,
                             ),
-                          ),
-                        ],
-                      );
-              },
-            ),
-          ],
+                            OurSizedBox(),
+                            Text(
+                              "No Transaction made yet",
+                              style: TextStyle(
+                                fontSize: ScreenUtil().setSp(17.5),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
